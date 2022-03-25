@@ -1,0 +1,16 @@
+connector:
+  name: docker-github-suranc
+  identifier: dockergithubsuranc
+  description:
+  orgIdentifier: default
+  projectIdentifier: Spring_Forward
+  type: DockerRegistry
+  spec:
+    dockerRegistryUrl: https://ghcr.io
+    providerType: Other
+    auth:
+      type: UsernamePassword
+      spec:
+        username: suranc
+        usernameRef: null
+        passwordRef: githubpatsuranc
