@@ -1,0 +1,23 @@
+connector:
+  name: github-suranc
+  identifier: githubsuranc
+  description:
+  orgIdentifier: default
+  projectIdentifier: Spring_Forward
+  type: Github
+  spec:
+    url: https://github.com/suranc
+    validationRepo: spring-forward-harness-example
+    authentication:
+      type: Http
+      spec:
+        type: UsernameToken
+        spec:
+          username: suranc
+          tokenRef: githubpatsuranc
+    apiAccess:
+      type: Token
+      spec:
+        tokenRef: githubpatsuranc
+    executeOnDelegate: false
+    type: Account
