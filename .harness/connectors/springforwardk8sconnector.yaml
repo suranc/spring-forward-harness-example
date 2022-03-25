@@ -1,0 +1,12 @@
+connector:
+  name: spring-forward-k8s-connector
+  identifier: springforwardk8sconnector
+  description:
+  orgIdentifier: default
+  projectIdentifier: Spring_Forward
+  type: K8sCluster
+  spec:
+    credential:
+      type: InheritFromDelegate
+    delegateSelectors:
+    - chris-ng-delegate
