@@ -41,6 +41,12 @@ service:
   type: ClusterIP
   port: 80
 
+testVars:
+  var1: <+pipeline.variables.pr_number>
+  var2: <+codebase.prNumber>
+  var3: <+trigger.prNumber>
+  var4: <+service.name>
+
 ingress:
   enabled: false
   className: ""
