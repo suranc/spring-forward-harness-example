@@ -33,7 +33,7 @@ pipeline:
                                     connectorRef: dockergithubsuranc
                                     repo: ghcr.io/suranc/spring-forward-harness-example
                                     tags:
-                                        - latest
+                                        - latest-<+codebase.prNumber>
                                     optimize: true
         - stage:
               name: Deploy PR
