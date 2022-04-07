@@ -33,6 +33,19 @@ pipeline:
                                                     branch: master
                                             skipResourceVersioning: false
                                             helmVersion: V3
+                                  - manifest:
+                                        identifier: spring_forward_pr_values
+                                        type: Values
+                                        spec:
+                                            store:
+                                                type: Github
+                                                spec:
+                                                    connectorRef: githubsuranc
+                                                    gitFetchType: Branch
+                                                    paths:
+                                                        - helm-chart/values.yaml
+                                                    repoName: spring-forward-harness-example
+                                                    branch: pr-build-deploy
                               artifacts:
                                   primary:
                                       spec:
@@ -47,7 +60,7 @@ pipeline:
                           spec:
                               connectorRef: springforwardk8sconnector
                               namespace: chris-deploy-dev
-                              releaseName: release-<+INFRA_KEY>
+                              releaseName: r-<+codebase.prNumber>-<+INFRA_KEY>
                       allowSimultaneousDeployments: false
                   execution:
                       steps:
@@ -113,6 +126,31 @@ pipeline:
                                           type: K8sRollingRollback
                                           timeout: 10m
                                           spec: {}
+                          - step:
+                                type: ShellScript
+                                name: Sleep
+                                identifier: Sleep
+                                spec:
+                                    shell: Bash
+                                    onDelegate: true
+                                    source:
+                                        type: Inline
+                                        spec:
+                                            script: sleep 100
+                                    environmentVariables: []
+                                    outputVariables: []
+                                    executionTarget: {}
+                                timeout: 10m
+                          - step:
+                                type: K8sDelete
+                                name: Delete Release
+                                identifier: Delete_Release
+                                spec:
+                                    deleteResources:
+                                        type: ReleaseName
+                                        spec:
+                                            deleteNamespace: false
+                                timeout: 10m
                       rollbackSteps: []
                   serviceDependencies: []
               tags: {}
