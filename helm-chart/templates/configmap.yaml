@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "spring-forward.fullname" . }}
+data:
+  var1: {{ .Values.testVars.var1 }}
+  var2: {{ .Values.testVars.var2 }}
+  var3: {{ .Values.testVars.var3 }}
+  var4: {{ .Values.testVars.var4 }}
