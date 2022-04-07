@@ -47,7 +47,10 @@ pipeline:
                       serviceDefinition:
                           type: Kubernetes
                           spec:
-                              variables: []
+                              variables:
+                                  - name: pr_number
+                                    type: String
+                                    value: <+codebase.prNumber>
                               manifests:
                                   - manifest:
                                         identifier: Spring_Forward_Manifest
