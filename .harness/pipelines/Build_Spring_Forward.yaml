@@ -56,10 +56,10 @@ pipeline:
                                                 type: Github
                                                 spec:
                                                     connectorRef: githubsuranc
-                                                    gitFetchType: Commit
+                                                    gitFetchType: Branch
                                                     folderPath: helm-chart/
                                                     repoName: spring-forward-harness-example
-                                                    commitId: master
+                                                    branch: master
                                             skipResourceVersioning: false
                                             helmVersion: V3
                                   - manifest:
