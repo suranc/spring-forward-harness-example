@@ -73,7 +73,7 @@ pipeline:
                                                     gitFetchType: Branch
                                                     paths:
                                                         - helm-chart/values.yaml
-                                                    repoName: spring-forward-helm-example
+                                                    repoName: spring-forward-harness-example
                                                     branch: pr-build-deploy
                   infrastructure:
                       environmentRef: Dev
@@ -93,6 +93,7 @@ pipeline:
                                 timeout: 10m
                                 spec:
                                     skipDryRun: false
+                                failureStrategies: []
                           - step:
                                 type: ShellScript
                                 name: Sleep
@@ -132,3 +133,4 @@ pipeline:
                             - AllErrors
                         action:
                             type: StageRollback
+              variables: []
