@@ -134,3 +134,7 @@ pipeline:
                         action:
                             type: StageRollback
               variables: []
+    variables:
+        - name: pr_number
+          type: String
+          value: <+codebase.prNumber>
