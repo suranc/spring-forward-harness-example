@@ -41,6 +41,9 @@ service:
   type: ClusterIP
   port: 80
 
+exampleConfigMap:
+  enabled: false
+
 ingress:
   enabled: false
   className: ""
