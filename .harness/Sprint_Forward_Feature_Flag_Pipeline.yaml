@@ -1,0 +1,31 @@
+pipeline:
+    name: Sprint Forward Feature Flag Pipeline
+    identifier: Sprint_Forward_Feature_Flag_Pipeline
+    projectIdentifier: Spring_Forward
+    orgIdentifier: default
+    tags: {}
+    stages:
+        - stage:
+              name: FF1
+              identifier: FF1
+              description: ""
+              type: FeatureFlag
+              spec:
+                  execution:
+                      steps:
+                          - step:
+                                type: ShellScript
+                                name: Temp shell
+                                identifier: Temp_shell
+                                spec:
+                                    shell: Bash
+                                    onDelegate: true
+                                    source:
+                                        type: Inline
+                                        spec:
+                                            script: echo test
+                                    environmentVariables: []
+                                    outputVariables: []
+                                    executionTarget: {}
+                                timeout: 10m
+                  serviceDependencies: []
