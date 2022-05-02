@@ -20,7 +20,7 @@ pipeline:
                               manifests:
                                   - manifest:
                                         identifier: Build_Cache
-                                        type: Values
+                                        type: K8sManifest
                                         spec:
                                             store:
                                                 type: Github
@@ -31,6 +31,7 @@ pipeline:
                                                         - infra/build-cache/cache.yaml
                                                     repoName: spring-forward-harness-example
                                                     branch: master
+                                            skipResourceVersioning: false
                   infrastructure:
                       environmentRef: Dev
                       infrastructureDefinition:
