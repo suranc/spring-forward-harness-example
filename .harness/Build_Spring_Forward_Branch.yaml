@@ -1,0 +1,37 @@
+pipeline:
+    name: Build Spring Forward Branch
+    identifier: Build_Spring_Forward_Branch
+    projectIdentifier: Spring_Forward
+    orgIdentifier: default
+    tags: {}
+    properties:
+        ci:
+            codebase:
+                connectorRef: githubsuranc
+                repoName: spring-forward-harness-example
+                build: <+input>
+    stages:
+        - stage:
+              name: Build Branch
+              identifier: Build_Branch
+              type: CI
+              spec:
+                  cloneCodebase: true
+                  infrastructure:
+                      type: KubernetesDirect
+                      spec:
+                          connectorRef: springforwardk8sconnector
+                          namespace: chris-builds
+                          automountServiceAccountToken: true
+                  execution:
+                      steps:
+                          - step:
+                                type: BuildAndPushDockerRegistry
+                                name: Build Spring Forward Branch
+                                identifier: Build_Spring_Forward_Branch
+                                spec:
+                                    connectorRef: dockergithubsuranc
+                                    repo: ghcr.io/suranc/spring-forward-harness-example
+                                    tags:
+                                        - <+codebase.sourceBranch>
+                                    optimize: false
