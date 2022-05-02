@@ -33,5 +33,5 @@ pipeline:
                                     connectorRef: dockergithubsuranc
                                     repo: ghcr.io/suranc/spring-forward-harness-example
                                     tags:
-                                        - <+codebase.sourceBranch>
+                                        - test-<+codebase.sourceBranch>
                                     optimize: false
