@@ -1,0 +1,25 @@
+featureFlags:
+  flags:
+  - flag:
+      name: New Feature
+      identifier: New_Feature
+      description: ""
+      permanent: false
+      spec:
+        type: boolean
+        default:
+          onVariation: "true"
+          offVariation: "false"
+        variations:
+        - identifier: "true"
+          value: "true"
+        - identifier: "false"
+          value: "false"
+      environments:
+      - identifier: Dev
+        default:
+          onVariation: "true"
+          offVariation: "false"
+        state: "off"
+  projectIdentifier: Spring_Forward
+  orgIdentifier: default
