@@ -6,3 +6,5 @@ metadata:
 spec:
   # storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set
   volumeName: build-cache
+  accessModes:
+    - ReadWriteMany
