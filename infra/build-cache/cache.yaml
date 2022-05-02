@@ -8,3 +8,5 @@ spec:
   volumeName: build-cache
   accessModes:
     - ReadWriteMany
+  capacity:
+    storage: 16Gi
