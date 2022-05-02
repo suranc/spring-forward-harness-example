@@ -45,7 +45,7 @@ pipeline:
                                                     paths:
                                                         - helm-chart/values.yaml
                                                     repoName: spring-forward-harness-example
-                                                    branch: pr-build-deploy
+                                                    branch: master
                               artifacts:
                                   primary:
                                       spec:
@@ -60,7 +60,7 @@ pipeline:
                           spec:
                               connectorRef: springforwardk8sconnector
                               namespace: chris-deploy-dev
-                              releaseName: r-<+codebase.prNumber>-<+INFRA_KEY>
+                              releaseName: r-<+INFRA_KEY>
                       allowSimultaneousDeployments: false
                   execution:
                       steps:
