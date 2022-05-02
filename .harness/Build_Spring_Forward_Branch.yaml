@@ -35,3 +35,6 @@ pipeline:
                                     tags:
                                         - test-<+codebase.sourceBranch>
                                     optimize: false
+                                    resources:
+                                        limits:
+                                            memory: 4Gi
