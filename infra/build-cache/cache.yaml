@@ -1,14 +1,32 @@
+kind: PersistentVolume
 apiVersion: v1
-kind: PersistentVolumeClaim
 metadata:
-  name: build-cache
+  name: suran-build-cache
+  namespace: chris-builds
+  labels:
+    name: suran-build-cache
+spec:
+  capacity:
+    storage: 20Gi
+  storageClassName: standard
+  accessModes:
+    - ReadWriteMany
+  gcePersistentDisk:
+    pdName: suran-build-cache
+    fsType: ext4
+    readOnly: true
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: suran-build-cache-claim
   namespace: chris-builds
 spec:
-  # storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set
-  volumeName: build-cache
-  storageClassName: standard
   accessModes:
     - ReadWriteMany
   resources:
     requests:
-      storage: 16Gi
+      storage: 20Gi
+  selector:
+    matchLabels:
+      name: suran-build-cache
