@@ -8,7 +8,7 @@ image:
   repository: ghcr.io/suranc/spring-forward-harness-example
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  #tag: <+artifact.tag>
+  #tag: < + artifact.tag>
 
 imagePullSecrets: []
 nameOverride: ""
