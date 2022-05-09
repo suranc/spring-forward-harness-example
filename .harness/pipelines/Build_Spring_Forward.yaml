@@ -73,9 +73,9 @@ pipeline:
                                                     connectorRef: githubsuranc
                                                     gitFetchType: Branch
                                                     paths:
-                                                        - helm-chart/values.yaml
+                                                        - helm-chart/pr-values.yaml
                                                     repoName: spring-forward-harness-example
-                                                    branch: pr-build-deploy
+                                                    branch: master
                   infrastructure:
                       environmentRef: Dev
                       infrastructureDefinition:
