@@ -83,7 +83,7 @@ pipeline:
                           spec:
                               connectorRef: springforwardk8sconnector
                               namespace: chris-deploy-dev
-                              releaseName: '"release-" + <+codebase.prNumber> + "-" + <+INFRA_KEY>'
+                              releaseName: release-<+codebase.prNumber>-<+INFRA_KEY>
                       allowSimultaneousDeployments: false
                   execution:
                       steps:
