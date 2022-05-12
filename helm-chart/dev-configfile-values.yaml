@@ -1,0 +1,20 @@
+exampleConfigMap:
+  enabled: true
+  testVars:
+    var1: value1
+    var2: value2
+    var3: value3
+    var4: |
+      test1
+      test2
+      this is a config file
+      yaml:
+        key:
+          - value1
+          - value2
+        key2: value
+      [ini file]
+      entry1
+      entry2
+
+
