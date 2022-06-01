@@ -1,0 +1,75 @@
+template:
+    name: Stage Template Example
+    identifier: Stage_Template_Example
+    versionLabel: "1.0"
+    type: Stage
+    projectIdentifier: Spring_Forward
+    orgIdentifier: default
+    tags: {}
+    spec:
+        type: Deployment
+        spec:
+            serviceConfig:
+                serviceRef: Spring_Forward
+                serviceDefinition:
+                    spec:
+                        variables: []
+                        manifests:
+                            - manifest:
+                                  identifier: template_manifest
+                                  type: HelmChart
+                                  spec:
+                                      store:
+                                          type: Github
+                                          spec:
+                                              connectorRef: githubsuranc
+                                              gitFetchType: Branch
+                                              folderPath: <+input>
+                                              repoName: <+input>
+                                              branch: <+input>
+                                      skipResourceVersioning: false
+                                      helmVersion: V3
+                            - manifest:
+                                  identifier: template_valuess
+                                  type: Values
+                                  spec:
+                                      store:
+                                          type: Github
+                                          spec:
+                                              connectorRef: <+input>
+                                              gitFetchType: Branch
+                                              paths: <+input>
+                                              repoName: <+input>
+                                              branch: <+input>
+                    type: Kubernetes
+            infrastructure:
+                environmentRef: <+input>
+                infrastructureDefinition:
+                    type: KubernetesDirect
+                    spec:
+                        connectorRef: <+input>
+                        namespace: <+input>
+                        releaseName: release-<+INFRA_KEY>
+                allowSimultaneousDeployments: false
+            execution:
+                steps:
+                    - step:
+                          name: Rollout Deployment
+                          identifier: rolloutDeployment
+                          type: K8sRollingDeploy
+                          timeout: 10m
+                          spec:
+                              skipDryRun: false
+                rollbackSteps:
+                    - step:
+                          name: Rollback Rollout Deployment
+                          identifier: rollbackRolloutDeployment
+                          type: K8sRollingRollback
+                          timeout: 10m
+                          spec: {}
+        failureStrategies:
+            - onFailure:
+                  errors:
+                      - AllErrors
+                  action:
+                      type: StageRollback
