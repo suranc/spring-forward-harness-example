@@ -45,5 +45,20 @@ pipeline:
                                     outputVariables: []
                                     executionTarget: {}
                                 timeout: 10m
-                      rollbackSteps: []
+                      rollbackSteps:
+                          - step:
+                                type: ShellScript
+                                name: echo
+                                identifier: echo
+                                spec:
+                                    shell: Bash
+                                    onDelegate: true
+                                    source:
+                                        type: Inline
+                                        spec:
+                                            script: echo test
+                                    environmentVariables: []
+                                    outputVariables: []
+                                    executionTarget: {}
+                                timeout: 10m
               tags: {}
