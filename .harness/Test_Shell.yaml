@@ -62,3 +62,9 @@ pipeline:
                                     executionTarget: {}
                                 timeout: 10m
               tags: {}
+              failureStrategies:
+                  - onFailure:
+                        errors:
+                            - AllErrors
+                        action:
+                            type: StageRollback
