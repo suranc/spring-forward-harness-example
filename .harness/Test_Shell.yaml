@@ -1,0 +1,49 @@
+pipeline:
+    name: Test Shell
+    identifier: Test_Shell
+    projectIdentifier: Spring_Forward
+    orgIdentifier: default
+    tags: {}
+    stages:
+        - stage:
+              name: test shell
+              identifier: test_shell
+              description: ""
+              type: Deployment
+              spec:
+                  serviceConfig:
+                      serviceRef: Spring_Forward
+                      serviceDefinition:
+                          spec:
+                              variables: []
+                          type: Kubernetes
+                  infrastructure:
+                      environmentRef: Dev
+                      infrastructureDefinition:
+                          type: KubernetesDirect
+                          spec:
+                              connectorRef: springforwardk8sconnector
+                              namespace: chris-deploy-cg-sf
+                              releaseName: release-<+INFRA_KEY>
+                      allowSimultaneousDeployments: false
+                  execution:
+                      steps:
+                          - step:
+                                type: ShellScript
+                                name: kubectl get all
+                                identifier: kubectl_get_all
+                                spec:
+                                    shell: Bash
+                                    onDelegate: true
+                                    source:
+                                        type: Inline
+                                        spec:
+                                            script: |-
+                                                export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}
+                                                kubectl get all
+                                    environmentVariables: []
+                                    outputVariables: []
+                                    executionTarget: {}
+                                timeout: 10m
+                      rollbackSteps: []
+              tags: {}
