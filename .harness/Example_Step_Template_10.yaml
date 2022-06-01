@@ -1,0 +1,21 @@
+template:
+    name: Example Step Template
+    identifier: Example_Step_Template
+    versionLabel: "1.0"
+    type: Step
+    projectIdentifier: Spring_Forward
+    orgIdentifier: default
+    tags: {}
+    spec:
+        type: ShellScript
+        timeout: 10m
+        spec:
+            shell: Bash
+            onDelegate: true
+            source:
+                type: Inline
+                spec:
+                    script: echo test
+            environmentVariables: []
+            outputVariables: []
+            executionTarget: {}
