@@ -22,7 +22,7 @@ template:
                                       store:
                                           type: Github
                                           spec:
-                                              connectorRef: githubsuranc
+                                              connectorRef: <+input>
                                               gitFetchType: Branch
                                               folderPath: <+input>
                                               repoName: <+input>
