@@ -1,0 +1,68 @@
+template:
+    name: Sample Pipeline Template
+    identifier: Sample_Pipeline_Template
+    versionLabel: "1.0"
+    type: Pipeline
+    projectIdentifier: Spring_Forward
+    orgIdentifier: default
+    tags: {}
+    spec:
+        stages:
+            - stage:
+                  name: Deploy Service
+                  identifier: Deploy_Service
+                  description: ""
+                  type: Deployment
+                  spec:
+                      serviceConfig:
+                          serviceDefinition:
+                              spec:
+                                  variables: []
+                                  manifests:
+                                      - manifest:
+                                            identifier: Manifests
+                                            type: K8sManifest
+                                            spec:
+                                                store:
+                                                    type: Github
+                                                    spec:
+                                                        connectorRef: <+input>
+                                                        gitFetchType: Branch
+                                                        paths: <+input>
+                                                        repoName: <+input>
+                                                        branch: <+input>
+                                                skipResourceVersioning: false
+                              type: Kubernetes
+                          serviceRef: <+input>
+                      infrastructure:
+                          environmentRef: <+input>
+                          infrastructureDefinition:
+                              type: KubernetesDirect
+                              spec:
+                                  connectorRef: <+input>
+                                  namespace: <+input>
+                                  releaseName: release-<+INFRA_KEY>
+                          allowSimultaneousDeployments: false
+                      execution:
+                          steps:
+                              - step:
+                                    name: Rollout Deployment
+                                    identifier: rolloutDeployment
+                                    type: K8sRollingDeploy
+                                    timeout: 10m
+                                    spec:
+                                        skipDryRun: false
+                          rollbackSteps:
+                              - step:
+                                    name: Rollback Rollout Deployment
+                                    identifier: rollbackRolloutDeployment
+                                    type: K8sRollingRollback
+                                    timeout: 10m
+                                    spec: {}
+                  tags: {}
+                  failureStrategies:
+                      - onFailure:
+                            errors:
+                                - AllErrors
+                            action:
+                                type: StageRollback
