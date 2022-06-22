@@ -1,0 +1,105 @@
+pipeline:
+    name: Pipeline from Template
+    identifier: Pipeline_from_Template
+    template:
+        templateRef: Sample_Pipeline_Template
+        versionLabel: "1.0"
+        templateInputs:
+            stages:
+                - stage:
+                      identifier: Deploy_Service_to_dev
+                      template:
+                          templateInputs:
+                              type: Deployment
+                              spec:
+                                  serviceConfig:
+                                      serviceDefinition:
+                                          type: Kubernetes
+                                          spec:
+                                              manifests:
+                                                  - manifest:
+                                                        identifier: template_manifest
+                                                        type: HelmChart
+                                                        spec:
+                                                            store:
+                                                                type: Github
+                                                                spec:
+                                                                    connectorRef: <+input>
+                                                                    folderPath: <+input>
+                                                                    repoName: <+input>
+                                                                    branch: <+input>
+                                                  - manifest:
+                                                        identifier: template_values
+                                                        type: Values
+                                                        spec:
+                                                            store:
+                                                                type: Github
+                                                                spec:
+                                                                    connectorRef: <+input>
+                                                                    paths: <+input>
+                                                                    repoName: <+input>
+                                                                    branch: <+input>
+                                              artifacts:
+                                                  primary:
+                                                      type: DockerRegistry
+                                                      spec:
+                                                          connectorRef: <+input>
+                                                          imagePath: <+input>
+                                                          tag: <+input>
+                                  infrastructure:
+                                      environmentRef: <+input>
+                                      infrastructureDefinition:
+                                          type: KubernetesDirect
+                                          spec:
+                                              connectorRef: <+input>
+                                              namespace: <+input>
+                - stage:
+                      identifier: Deploy_Service_to_test
+                      template:
+                          templateInputs:
+                              type: Deployment
+                              spec:
+                                  serviceConfig:
+                                      serviceDefinition:
+                                          type: Kubernetes
+                                          spec:
+                                              manifests:
+                                                  - manifest:
+                                                        identifier: template_manifest
+                                                        type: HelmChart
+                                                        spec:
+                                                            store:
+                                                                type: Github
+                                                                spec:
+                                                                    connectorRef: <+input>
+                                                                    folderPath: <+input>
+                                                                    repoName: <+input>
+                                                                    branch: <+input>
+                                                  - manifest:
+                                                        identifier: template_values
+                                                        type: Values
+                                                        spec:
+                                                            store:
+                                                                type: Github
+                                                                spec:
+                                                                    connectorRef: <+input>
+                                                                    paths: <+input>
+                                                                    repoName: <+input>
+                                                                    branch: <+input>
+                                              artifacts:
+                                                  primary:
+                                                      type: DockerRegistry
+                                                      spec:
+                                                          connectorRef: <+input>
+                                                          imagePath: <+input>
+                                                          tag: <+input>
+                                  infrastructure:
+                                      environmentRef: <+input>
+                                      infrastructureDefinition:
+                                          type: KubernetesDirect
+                                          spec:
+                                              connectorRef: <+input>
+                                              namespace: <+input>
+    tags: {}
+    projectIdentifier: Spring_Forward
+    orgIdentifier: default
