@@ -32,6 +32,13 @@ template:
                                                         repoName: <+input>
                                                         branch: <+input>
                                                 skipResourceVersioning: false
+                                  artifacts:
+                                      primary:
+                                          spec:
+                                              connectorRef: dockergithubsuranc
+                                              imagePath: ghcr.io/suranc/spring-forward-harness-example
+                                              tag: <+input>
+                                          type: DockerRegistry
                               type: Kubernetes
                           serviceRef: <+input>
                       infrastructure:
