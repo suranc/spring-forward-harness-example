@@ -118,7 +118,7 @@ template:
                                                                 repoName: <+input>
                                                                 branch: <+input>
                                               - manifest:
-                                                    identifier: template_valuess
+                                                    identifier: template_values
                                                     type: Values
                                                     spec:
                                                         store:
