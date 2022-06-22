@@ -10,88 +10,54 @@ template:
         stages:
             - stage:
                   name: Deploy Service to dev
-                  identifier: Deploy_Service
-                  description: ""
-                  type: Deployment
-                  spec:
-                      serviceConfig:
-                          serviceDefinition:
-                              spec:
-                                  variables: []
-                                  manifests:
-                                      - manifest:
-                                            identifier: Manifests
-                                            type: K8sManifest
-                                            spec:
-                                                store:
-                                                    type: Github
+                  identifier: Deploy_Service_to_dev
+                  template:
+                      templateRef: Stage_Template_Example
+                      versionLabel: "1.0"
+                      templateInputs:
+                          type: Deployment
+                          spec:
+                              serviceConfig:
+                                  serviceDefinition:
+                                      type: Kubernetes
+                                      spec:
+                                          manifests:
+                                              - manifest:
+                                                    identifier: template_manifest
+                                                    type: HelmChart
                                                     spec:
-                                                        connectorRef: <+input>
-                                                        gitFetchType: Branch
-                                                        paths: <+input>
-                                                        repoName: <+input>
-                                                        branch: <+input>
-                                                skipResourceVersioning: false
-                                  artifacts:
-                                      primary:
-                                          spec:
-                                              connectorRef: dockergithubsuranc
-                                              imagePath: ghcr.io/suranc/spring-forward-harness-example
-                                              tag: <+input>
-                                          type: DockerRegistry
-                              type: Kubernetes
-                          serviceRef: <+input>
-                      infrastructure:
-                          environmentRef: <+input>
-                          infrastructureDefinition:
-                              type: KubernetesDirect
-                              spec:
-                                  connectorRef: <+input>
-                                  namespace: <+input>
-                                  releaseName: release-<+INFRA_KEY>
-                          allowSimultaneousDeployments: false
-                      execution:
-                          steps:
-                              - step:
-                                    name: Rollout Deployment
-                                    identifier: rolloutDeployment
-                                    type: K8sRollingDeploy
-                                    timeout: 10m
-                                    spec:
-                                        skipDryRun: false
-                              - step:
-                                    type: ShellScript
-                                    name: Verify Deployment
-                                    identifier: Verify_Deployment
-                                    spec:
-                                        shell: Bash
-                                        onDelegate: true
-                                        source:
-                                            type: Inline
-                                            spec:
-                                                script: echo "testing"
-                                        environmentVariables: []
-                                        outputVariables: []
-                                        executionTarget: {}
-                                    timeout: 10m
-                                    when:
-                                        stageStatus: Failure
-                                        condition: <+service.name> != “Exception Service”
-                                    failureStrategies: []
-                          rollbackSteps:
-                              - step:
-                                    name: Rollback Rollout Deployment
-                                    identifier: rollbackRolloutDeployment
-                                    type: K8sRollingRollback
-                                    timeout: 10m
-                                    spec: {}
-                  tags: {}
-                  failureStrategies:
-                      - onFailure:
-                            errors:
-                                - AllErrors
-                            action:
-                                type: StageRollback
+                                                        store:
+                                                            type: Github
+                                                            spec:
+                                                                connectorRef: <+input>
+                                                                folderPath: <+input>
+                                                                repoName: <+input>
+                                                                branch: <+input>
+                                              - manifest:
+                                                    identifier: template_values
+                                                    type: Values
+                                                    spec:
+                                                        store:
+                                                            type: Github
+                                                            spec:
+                                                                connectorRef: <+input>
+                                                                paths: <+input>
+                                                                repoName: <+input>
+                                                                branch: <+input>
+                                          artifacts:
+                                              primary:
+                                                  type: DockerRegistry
+                                                  spec:
+                                                      connectorRef: <+input>
+                                                      imagePath: <+input>
+                                                      tag: <+input>
+                              infrastructure:
+                                  environmentRef: <+input>
+                                  infrastructureDefinition:
+                                      type: KubernetesDirect
+                                      spec:
+                                          connectorRef: <+input>
+                                          namespace: <+input>
             - stage:
                   name: Deploy Service to test
                   identifier: Deploy_Service_to_test
