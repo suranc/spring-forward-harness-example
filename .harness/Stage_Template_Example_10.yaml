@@ -44,8 +44,8 @@ template:
                         artifacts:
                             primary:
                                 spec:
-                                    connectorRef: dockergithubsuranc
-                                    imagePath: ghcr.io/suranc/spring-forward-harness-example
+                                    connectorRef: <+input>
+                                    imagePath: <+input>
                                     tag: <+input>
                                 type: DockerRegistry
                     type: Kubernetes
