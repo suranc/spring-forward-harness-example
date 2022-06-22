@@ -52,6 +52,25 @@ template:
                                     timeout: 10m
                                     spec:
                                         skipDryRun: false
+                              - step:
+                                    type: ShellScript
+                                    name: Verify Deployment
+                                    identifier: Verify_Deployment
+                                    spec:
+                                        shell: Bash
+                                        onDelegate: true
+                                        source:
+                                            type: Inline
+                                            spec:
+                                                script: echo "testing"
+                                        environmentVariables: []
+                                        outputVariables: []
+                                        executionTarget: {}
+                                    timeout: 10m
+                                    when:
+                                        stageStatus: Failure
+                                        condition: <+service.name> != “Exception Service”
+                                    failureStrategies: []
                           rollbackSteps:
                               - step:
                                     name: Rollback Rollout Deployment
