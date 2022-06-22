@@ -92,3 +92,46 @@ template:
                                 - AllErrors
                             action:
                                 type: StageRollback
+            - stage:
+                  name: Deploy Service to test
+                  identifier: Deploy_Service_to_test
+                  template:
+                      templateRef: Stage_Template_Example
+                      versionLabel: "1.0"
+                      templateInputs:
+                          type: Deployment
+                          spec:
+                              serviceConfig:
+                                  serviceDefinition:
+                                      type: Kubernetes
+                                      spec:
+                                          manifests:
+                                              - manifest:
+                                                    identifier: template_manifest
+                                                    type: HelmChart
+                                                    spec:
+                                                        store:
+                                                            type: Github
+                                                            spec:
+                                                                connectorRef: <+input>
+                                                                folderPath: <+input>
+                                                                repoName: <+input>
+                                                                branch: <+input>
+                                              - manifest:
+                                                    identifier: template_valuess
+                                                    type: Values
+                                                    spec:
+                                                        store:
+                                                            type: Github
+                                                            spec:
+                                                                connectorRef: <+input>
+                                                                paths: <+input>
+                                                                repoName: <+input>
+                                                                branch: <+input>
+                              infrastructure:
+                                  environmentRef: <+input>
+                                  infrastructureDefinition:
+                                      type: KubernetesDirect
+                                      spec:
+                                          connectorRef: <+input>
+                                          namespace: <+input>
