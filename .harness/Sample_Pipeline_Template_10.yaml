@@ -125,6 +125,7 @@ template:
                                                             type: Github
                                                             spec:
                                                                 connectorRef: <+input>
+                                                                paths: <+input>
                                                                 repoName: <+input>
                                                                 branch: <+input>
                                           artifacts:
