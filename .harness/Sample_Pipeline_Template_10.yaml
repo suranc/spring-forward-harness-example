@@ -125,9 +125,15 @@ template:
                                                             type: Github
                                                             spec:
                                                                 connectorRef: <+input>
-                                                                paths: <+input>
                                                                 repoName: <+input>
                                                                 branch: <+input>
+                                          artifacts:
+                                              primary:
+                                                  type: DockerRegistry
+                                                  spec:
+                                                      connectorRef: <+input>
+                                                      imagePath: <+input>
+                                                      tag: <+input>
                               infrastructure:
                                   environmentRef: <+input>
                                   infrastructureDefinition:
