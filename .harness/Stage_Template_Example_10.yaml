@@ -30,7 +30,7 @@ template:
                                       skipResourceVersioning: false
                                       helmVersion: V3
                             - manifest:
-                                  identifier: template_valuess
+                                  identifier: template_values
                                   type: Values
                                   spec:
                                       store:
@@ -41,6 +41,13 @@ template:
                                               paths: <+input>
                                               repoName: <+input>
                                               branch: <+input>
+                        artifacts:
+                            primary:
+                                spec:
+                                    connectorRef: dockergithubsuranc
+                                    imagePath: ghcr.io/suranc/spring-forward-harness-example
+                                    tag: <+input>
+                                type: DockerRegistry
                     type: Kubernetes
             infrastructure:
                 environmentRef: <+input>
