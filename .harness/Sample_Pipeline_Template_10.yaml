@@ -9,7 +9,7 @@ template:
     spec:
         stages:
             - stage:
-                  name: Deploy Service
+                  name: Deploy Service to dev
                   identifier: Deploy_Service
                   description: ""
                   type: Deployment
