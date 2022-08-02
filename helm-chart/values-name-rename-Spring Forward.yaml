@@ -1,2 +1,3 @@
-nameOverride: "release-rename"
+instancenameOverride: "release-rename"
+nameOverride: "spring-forward"
 fullnameOverride: "release-rename-spring-forward"
