@@ -1,1 +1,2 @@
+nameOverride: "release-rename"
 fullnameOverride: "release-rename-spring-forward"
