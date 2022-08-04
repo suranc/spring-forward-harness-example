@@ -2,10 +2,9 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-tplsecret:
+secret:
   test1: value
   test2: value
-#tplsecret: "test: test"
 
 replicaCount: 1
 
