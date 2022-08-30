@@ -30,7 +30,7 @@ pipeline:
             steps:
               - step:
                   type: BuildAndPushDockerRegistry
-                  name: Build Dockerfile - Put Jar in workspace
+                  name: Build Image
                   identifier: Build_Dockerfile_Put_Jar_in_workspace
                   spec:
                     connectorRef: dockergithubsuranc
@@ -46,7 +46,9 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: ghcr.io/suranc/spring-forward-harness-example
                     shell: Sh
-                    command: echo build > build-info
+                    command: |-
+                      mkdir build-output
+                      cp /app/spring-forward-0.0.1-SNAPSHOT.jar ./build-output/
                   failureStrategies: []
               - step:
                   type: Run
@@ -56,6 +58,4 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: alpine
                     shell: Sh
-                    command: |-
-                      echo test
-                      ls
+                    command: du -sh build-output/*.jar
