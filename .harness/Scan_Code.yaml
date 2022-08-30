@@ -36,7 +36,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: alpine
                     shell: Sh
-                    command: echo build > /build-info
+                    command: echo build > build-info
                   failureStrategies: []
               - step:
                   type: Run
@@ -48,4 +48,4 @@ pipeline:
                     shell: Sh
                     command: |-
                       echo test
-                      ls /
+                      ls
