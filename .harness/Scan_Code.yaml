@@ -30,10 +30,22 @@ pipeline:
             steps:
               - step:
                   type: Run
+                  name: Build Image
+                  identifier: Build_Image
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: alpine
+                    shell: Sh
+                    command: echo build > /build-info
+                  failureStrategies: []
+              - step:
+                  type: Run
                   name: Scan Image
                   identifier: Scan_Image
                   spec:
                     connectorRef: account.harnessImage
                     image: alpine
                     shell: Sh
-                    command: echo test
+                    command: |-
+                      echo test
+                      ls /
