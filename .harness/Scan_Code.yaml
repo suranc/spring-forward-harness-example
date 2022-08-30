@@ -33,7 +33,7 @@ pipeline:
                   name: Scan Image
                   identifier: Scan_Image
                   spec:
-                    connectorRef: dockergithubsuranc
+                    connectorRef: account.harnessImage
                     image: alpine
                     shell: Sh
                     command: echo test
