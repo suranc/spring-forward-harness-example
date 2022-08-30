@@ -1,0 +1,39 @@
+pipeline:
+  name: Scan Code
+  identifier: Scan_Code
+  projectIdentifier: Spring_Forward
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: githubsuranc
+        repoName: spring-forward-harness-example
+        build: <+input>
+  stages:
+    - stage:
+        name: Build and Scan Image
+        identifier: Build_and_Scan_Image
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: springforwardk8sconnector
+              namespace: chris-builds
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Scan Image
+                  identifier: Scan_Image
+                  spec:
+                    connectorRef: dockergithubsuranc
+                    image: alpine
+                    shell: Sh
+                    command: echo test
