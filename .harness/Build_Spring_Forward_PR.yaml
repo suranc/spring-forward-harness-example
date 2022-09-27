@@ -1,0 +1,42 @@
+pipeline:
+  name: Build Spring Forward PR
+  identifier: Build_Spring_Forward_PR
+  projectIdentifier: SA_Examples
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: harnessioaccount
+        repoName: spring-forward-harness-example
+        build: <+input>
+  stages:
+    - stage:
+        name: Build PR
+        identifier: Build_PR
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: sacluster
+              namespace: default
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: Build PR
+                  identifier: Build_PR
+                  spec:
+                    connectorRef: sfdockerconnector
+                    repo: ghcr.io/suranc/spring-forward-harness-example
+                    tags:
+                      - <+codebase.sourceBranch>
+                    resources:
+                      limits:
+                        memory: 4Gi
