@@ -1,0 +1,14 @@
+inputSet:
+  identifier: "Spring_Forward_PR_Input_Set"
+  name: "Spring Forward PR Input Set"
+  orgIdentifier: "default"
+  projectIdentifier: "SA_Examples"
+  pipeline:
+    identifier: "Build_Spring_Forward_PR"
+    properties:
+      ci:
+        codebase:
+          build:
+            type: "PR"
+            spec:
+              number: "<+trigger.prNumber>"
