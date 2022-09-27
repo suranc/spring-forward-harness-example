@@ -36,7 +36,7 @@ pipeline:
                     connectorRef: sfdockerconnector
                     repo: ghcr.io/suranc/spring-forward-harness-example
                     tags:
-                      - <+codebase.sourceBranch>
+                      - pr-<+trigger.prNumber>
                     resources:
                       limits:
                         memory: 4Gi
