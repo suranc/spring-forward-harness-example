@@ -29,7 +29,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>io.harness.cf</groupId>
+			<groupId>io.harness</groupId>
 			<artifactId>ff-java-server-sdk</artifactId>
 			<version>1.0.4</version>
 		</dependency>
