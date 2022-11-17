@@ -32,7 +32,7 @@
 			<groupId>io.harness.cf</groupId>
 			<artifactId>cf-client-sdk-java</artifactId>
 			<version>1.0.4</version>
-		</dependency>	
+		</dependency>
 	</dependencies>
 
 	<build>
