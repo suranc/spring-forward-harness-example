@@ -30,7 +30,7 @@
 
 		<dependency>
 			<groupId>io.harness.cf</groupId>
-			<artifactId>cf-client-sdk-java</artifactId>
+			<artifactId>ff-java-server-sdk</artifactId>
 			<version>1.0.4</version>
 		</dependency>
 	</dependencies>
