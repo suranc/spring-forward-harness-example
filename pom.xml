@@ -27,6 +27,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>io.harness.cf</groupId>
+			<artifactId>cf-client-sdk-java</artifactId>
+			<version>1.0.4</version>
+		</dependency>	
 	</dependencies>
 
 	<build>
