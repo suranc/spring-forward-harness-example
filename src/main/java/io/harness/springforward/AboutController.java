@@ -28,7 +28,7 @@ public class AboutController {
 							.identifier("user1@example.com")
 							.build();
 
-		if cfClient.boolVariation("ABOUT_PAGE", target, false) {
+		if (cfClient.boolVariation("ABOUT_PAGE", target, false)) {
 			return "FF is on!";
 		} else {
 			return "FF is off!";
