@@ -14,7 +14,7 @@ public class AboutController {
 		/**
 		* Put the API Key here from your environment
 		*/
-		String apiKey = '35adfc78-ea47-4290-a51d-9515f4c7e930';
+		String apiKey = "35adfc78-ea47-4290-a51d-9515f4c7e930";
 
 		CfClient cfClient = new CfClient(apiKey, Config.builder().build());
 
