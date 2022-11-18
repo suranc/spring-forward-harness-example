@@ -22,11 +22,11 @@ public class AboutController {
 		* Define you target on which you would like to evaluate
 		* the featureFlag
 		*/
-		Target target = Target.builder()
-							.name("User1")
-							.attributes(new HashMap<String, Object>())
-							.identifier("user1@example.com")
-							.build();
+		final Target target = Target.builder()
+                    .identifier("javasdk")
+                    .name("JavaSDK")
+                    .attribute("location", "emea")
+                    .build();
 
 		if (cfClient.boolVariation("ABOUT_PAGE", target, false)) {
 			return "FF is on!";
