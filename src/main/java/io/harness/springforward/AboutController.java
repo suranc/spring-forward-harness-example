@@ -13,7 +13,8 @@ public class AboutController {
 
 	public AboutController () {
 		String apiKey = "35adfc78-ea47-4290-a51d-9515f4c7e930";
-		this.cfClient = new CfClient(apiKey, Config.builder().build());
+		this.cfClient = new CfClient(apiKey);
+		//cfClient.waitForInitialization();
 	}
 
 	@GetMapping("/about")
