@@ -9,24 +9,26 @@ import io.harness.cf.client.dto.Target;
 @RestController
 public class AboutController {
 
+	CfClient cfClient;
+
+	public AboutController () {
+		String apiKey = "35adfc78-ea47-4290-a51d-9515f4c7e930";
+		this.cfClient = new CfClient(apiKey, Config.builder().build());
+	}
+
 	@GetMapping("/about")
 	public String index() {
-		/**
-		* Put the API Key here from your environment
-		*/
-		String apiKey = "35adfc78-ea47-4290-a51d-9515f4c7e930";
-
-		CfClient cfClient = new CfClient(apiKey, Config.builder().build());
-
 		/**
 		* Define you target on which you would like to evaluate
 		* the featureFlag
 		*/
 		final Target target = Target.builder()
-                    .identifier("javasdk")
-                    .name("JavaSDK")
-                    .attribute("location", "emea")
+                    .identifier("Test")
+                    .name("Test")
+                    .attribute("location", "test env")
                     .build();
+
+		System.out.println(cfClient.boolVariation("ABOUT_PAGE", target, false));
 
 		if (cfClient.boolVariation("ABOUT_PAGE", target, false)) {
 			return "FF is on!";
