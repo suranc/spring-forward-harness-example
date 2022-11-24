@@ -12,9 +12,8 @@ public class AboutController {
 	CfClient cfClient;
 
 	public AboutController () {
-		String apiKey = "35adfc78-ea47-4290-a51d-9515f4c7e930";
+		final String apiKey = (System.getenv("FF_API_KEY") != null) ? System.getenv("FF_API_KEY") : "";
 		this.cfClient = new CfClient(apiKey);
-		//cfClient.waitForInitialization();
 	}
 
 	@GetMapping("/about")
@@ -29,13 +28,17 @@ public class AboutController {
                     .attribute("location", "test env")
                     .build();
 
-		System.out.println(cfClient.boolVariation("ABOUT_PAGE", target, false));
+		Boolean ABOUT_PAGE = null;
+		try {
+			ABOUT_PAGE = cfClient.boolVariation("ABOUT_PAGE", target, false);
+		} catch (Exception e) {
+			ABOUT_PAGE = false;
+		}
 
-		if (cfClient.boolVariation("ABOUT_PAGE", target, false)) {
+		if (ABOUT_PAGE) {
 			return "FF is on!";
 		} else {
 			return "FF is off!";
 		}
 	}
-
 }
