@@ -2,6 +2,7 @@ FROM openjdk:11 AS builder
 COPY pom.xml /app/pom.xml
 COPY mvnw /app/mvnw
 COPY .mvn /app/.mvn
+COPY application.yml /app/application.yml
 WORKDIR /app
 RUN ./mvnw compile
 
