@@ -14,7 +14,6 @@ class ConsumeResources {
 	}
 }
 
-
 @RestController
 public class ResourceController {
 
