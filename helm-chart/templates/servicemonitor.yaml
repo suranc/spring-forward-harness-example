@@ -9,5 +9,5 @@ spec:
     matchLabels:
       {{- include "spring-forward.selectorLabels" . | nindent 6 }}
   endpoints:
-  - port: 8080
+  - port: http
     path: "/actuator/prometheus"
