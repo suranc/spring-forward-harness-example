@@ -6,7 +6,8 @@ metadata:
     {{- include "spring-forward.labels" . | nindent 4 }}
 spec:
   selector:
-    {{- include "spring-forward.selectorLabels" . | nindent 4 }}
+    matchLabels:
+      {{- include "spring-forward.selectorLabels" . | nindent 4 }}
   endpoints:
   - port: 8080
     path: "/actuator/prometheus"
