@@ -4,6 +4,7 @@ metadata:
   name: {{ include "spring-forward.fullname" . }}
   labels:
     {{- include "spring-forward.labels" . | nindent 4 }}
+    serviceMonitorSelector: prometheus
 spec:
   selector:
     matchLabels:
