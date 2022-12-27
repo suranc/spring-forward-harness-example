@@ -3,6 +3,11 @@ COPY pom.xml /app/pom.xml
 COPY mvnw /app/mvnw
 COPY .mvn /app/.mvn
 WORKDIR /app
+
+# Get build-arg for FF to compile.  Can be invalid but test is more complete if valid.
+ARG FF_API_KEY="your-api-key"
+ENV FF_API_KEY=${FF_API_KEY}
+
 RUN ./mvnw compile
 
 COPY src /app/src

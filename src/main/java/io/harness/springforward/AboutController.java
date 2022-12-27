@@ -9,12 +9,8 @@ import io.harness.cf.client.dto.Target;
 @RestController
 public class AboutController {
 
-	CfClient cfClient;
-
-	public AboutController () {
-		final String apiKey = (System.getenv("FF_API_KEY") != null) ? System.getenv("FF_API_KEY") : "";
-		this.cfClient = new CfClient(apiKey);
-	}
+	private final String apiKey = (System.getenv("FF_API_KEY") != null) ? System.getenv("FF_API_KEY") : "";
+	private CfClient cfClient = new CfClient(apiKey);
 
 	@GetMapping("/about")
 	public String index() {
