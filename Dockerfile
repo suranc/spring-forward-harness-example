@@ -4,7 +4,7 @@ COPY mvnw /app/mvnw
 COPY .mvn /app/.mvn
 WORKDIR /app
 
-# Get build-arg for FF to compile.  Can be invalid but test is more complete if valid.
+# build-arg to pass in FF API key, used by unit tests.  Can be invalid but test is more complete if valid.
 ARG FF_API_KEY="your-api-key"
 ENV FF_API_KEY=${FF_API_KEY}
 
