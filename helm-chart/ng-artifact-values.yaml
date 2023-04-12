@@ -4,4 +4,4 @@ image:
 exampleConfigMap:
   enabled: true
   testVars:
-    var1: value2
+    var1: value1
