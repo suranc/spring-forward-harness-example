@@ -5,8 +5,4 @@ metadata:
   name: {{ include "spring-forward.fullname" . }}
 data:
   var1: {{ .Values.exampleConfigMap.testVars.var1 }}
-  var2: {{ .Values.exampleConfigMap.testVars.var2 }}
-  var3: {{ .Values.exampleConfigMap.testVars.var3 }}
-  var4: |-
-{{ .Values.exampleConfigMap.testVars.var4 | indent 4 }}
 {{- end }}
