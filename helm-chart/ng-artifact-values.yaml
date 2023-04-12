@@ -1,2 +1,7 @@
 image:
   tag: "<+artifact.tag>"
+
+exampleConfigMap:
+  enabled: true
+  testVars:
+    var1: value1

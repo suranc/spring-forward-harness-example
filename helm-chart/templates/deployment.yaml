@@ -37,6 +37,13 @@ spec:
           env:
           - name: FF_API_KEY
             value: {{ .Values.harness.featureFlags.apiKey }}
+          - name: EXAMPLECM
+             valueFrom:
+               configMapKeyRef:
+                 # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+                 name: {{ include "spring-forward.fullname" . }}
+                 # Specify the key associated with the value
+                 key: var1
           {{- end }}
           ports:
             - name: http
