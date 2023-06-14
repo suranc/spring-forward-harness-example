@@ -14,7 +14,7 @@ exampleConfigMap:
   enabled: true
   testVars:
     var1: ""
-    var2: "<+secrets.getValue("test")>"
+    #var2: "<+secrets.getValue("test")>"
 
 harness:
   featureFlags:
