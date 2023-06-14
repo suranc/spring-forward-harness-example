@@ -8,7 +8,13 @@ image:
   repository: ghcr.io/suranc/spring-forward-harness-example
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: latest
+  #tag: "<+artifact.tag>"
+  tag: "pr-6"
+
+exampleConfigMap:
+  enabled: true
+  testVars:
+    var1: "<+secrets.getValue("test")>"
 
 harness:
   featureFlags:
