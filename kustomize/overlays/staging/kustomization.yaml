@@ -1,7 +1,7 @@
 kind: Kustomization
 
-# resources:
-#   - ../../base/main.yaml
+resources:
+  - ../../base
   
 namePrefix: staging-
 commonLabels:
@@ -9,4 +9,6 @@ commonLabels:
 commonAnnotations:
   note: “Staging Image”
 patches:
-- deployment.yaml
+- path: deployment.yaml
+  target:
+    kind: Deployment
