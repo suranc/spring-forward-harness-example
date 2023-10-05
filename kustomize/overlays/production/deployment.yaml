@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: spring-forward
+spec:
+  template:
+    spec:
+      containers:
+        - name: spring-forward
+          env:
+          - name: "ENV_TYPE"
+            value: "production"

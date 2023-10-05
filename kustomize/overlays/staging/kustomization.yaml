@@ -1,0 +1,14 @@
+kind: Kustomization
+
+# resources:
+#   - ../../base/main.yaml
+  
+namePrefix: staging-
+commonLabels:
+ variant: staging
+commonAnnotations:
+  note: “Staging Image”
+bases:
+- ../../base
+patchesStrategicMerge:
+- deployment.yaml

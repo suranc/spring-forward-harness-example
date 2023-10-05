@@ -1,0 +1,14 @@
+kind: Kustomization
+
+resources:
+  - ../../base
+
+namePrefix: production-
+commonLabels:
+ variant: production
+commonAnnotations:
+  note: “Production Image”
+bases:
+- ../../base
+patchesStrategicMerge:
+- deployment.yaml
