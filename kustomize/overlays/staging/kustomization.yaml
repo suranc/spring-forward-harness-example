@@ -8,7 +8,5 @@ commonLabels:
  variant: staging
 commonAnnotations:
   note: “Staging Image”
-bases:
-- ../../base
-patchesStrategicMerge:
+patches:
 - deployment.yaml
