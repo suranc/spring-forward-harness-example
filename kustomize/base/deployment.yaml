@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: spring-forward
-  namespace: gitops-team-2
   labels:
     app.kubernetes.io/name: spring-forward
     app.kubernetes.io/instance: example
