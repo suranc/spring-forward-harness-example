@@ -9,7 +9,7 @@ WORKDIR /app
 ARG FF_API_KEY="your-api-key"
 ENV FF_API_KEY=${FF_API_KEY}
 
-RUN ./mvnw compile
+RUN ./mvnw compile --settings /app/settings.xml
 
 COPY src /app/src
 RUN ./mvnw install --settings /app/settings.xml
