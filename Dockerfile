@@ -1,5 +1,6 @@
 FROM artifactory.harness.internal/example/openjdk:11 AS builder
 COPY pom.xml /app/pom.xml
+COPY settings.xml /app/settings.xml
 COPY mvnw /app/mvnw
 COPY .mvn /app/.mvn
 WORKDIR /app
@@ -11,7 +12,7 @@ ENV FF_API_KEY=${FF_API_KEY}
 RUN ./mvnw compile
 
 COPY src /app/src
-RUN ./mvnw install
+RUN ./mvnw install --settings /app/settings.xml
 
 FROM artifactory.harness.internal/example/openjdk:11
 COPY application.yml /app/application.yml
