@@ -13,7 +13,7 @@ RUN ./mvnw compile
 COPY src /app/src
 RUN ./mvnw install
 
-FROM artifactory.harness.internal/example/openjdkopenjdk:11
+FROM artifactory.harness.internal/example/openjdk:11
 COPY application.yml /app/application.yml
 COPY --from=builder /app/target/spring-forward-0.0.1-SNAPSHOT.jar /app/spring-forward-0.0.1-SNAPSHOT.jar
 WORKDIR /app
