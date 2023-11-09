@@ -1,5 +1,6 @@
-FROM openjdk:11 AS builder
+FROM artifactory.harness.internal/example/openjdk:11 AS builder
 COPY pom.xml /app/pom.xml
+COPY settings.xml /app/settings.xml
 COPY mvnw /app/mvnw
 COPY .mvn /app/.mvn
 WORKDIR /app
@@ -8,12 +9,12 @@ WORKDIR /app
 ARG FF_API_KEY="your-api-key"
 ENV FF_API_KEY=${FF_API_KEY}
 
-RUN ./mvnw compile
+RUN ./mvnw compile --settings /app/settings.xml
 
 COPY src /app/src
-RUN ./mvnw install
+RUN ./mvnw install --settings /app/settings.xml
 
-FROM openjdk:11
+FROM artifactory.harness.internal/example/openjdk:11
 COPY application.yml /app/application.yml
 COPY --from=builder /app/target/spring-forward-0.0.1-SNAPSHOT.jar /app/spring-forward-0.0.1-SNAPSHOT.jar
 WORKDIR /app
