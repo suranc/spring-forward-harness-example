@@ -1,4 +1,4 @@
 harness:
   featureFlags:
     enabled: true
-    apiKey: "<+secrets.getValue("Spring_Forward_Dev_FF_key")>"
+    apiKey: "<+env.variables.ff_key_spring_forward>"
