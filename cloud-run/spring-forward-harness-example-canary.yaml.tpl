@@ -39,7 +39,7 @@ spec:
       timeoutSeconds: 300
   traffic:
   - latestRevision: true
-    percent: 50
+    percent: 0
   - revisionName: {{ .Values.lastRevision }}
-    percent: 50
+    percent: 100
     
