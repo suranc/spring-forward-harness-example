@@ -1,27 +1,10 @@
 <settings>
-  <servers>
-    <server>
-      <id>artifact-registry</id>
-      <configuration>
-        <httpConfiguration>
-          <get>
-            <usePreemptive>true</usePreemptive>
-          </get>
-          <head>
-            <usePreemptive>true</usePreemptive>
-          </head>
-          <put>
-            <params>
-              <property>
-                <name>http.protocol.expect-continue</name>
-                <value>false</value>
-              </property>
-            </params>
-          </put>
-        </httpConfiguration>
-      </configuration>
-      <username>oauth2accesstoken</username>
-      <password>${internal.repo.password}</password>
-    </server>
-  </servers>
+<mirrors>
+    <mirror>
+      <id>central-proxy</id>
+      <name>Local proxy of central repo</name>
+      <url>artifactregistry://us-central1-maven.pkg.dev/sales-209522/maven-central</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>
+  </mirrors>
 </settings>
