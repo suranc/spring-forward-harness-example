@@ -32,7 +32,7 @@
 		<repository>
 		<id>central</id>
 		<name>Maven Central remote repository</name>
-		<url>aartifactregistry://us-central1-maven.pkg.dev/sales-209522/maven-central</url>
+		<url>artifactregistry://us-central1-maven.pkg.dev/sales-209522/maven-central</url>
 		<layout>default</layout>
 		<releases>
 			<enabled>true</enabled>
