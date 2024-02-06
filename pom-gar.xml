@@ -24,26 +24,25 @@
         </snapshotRepository>
         <repository>
         <id>artifact-registry</id>
-        <url>artifactregistry://us-central1-maven.pkg.dev/sales-209522/maven-central</url>
+        <url></url>
         </repository>
     </distributionManagement>
 
 	<repositories>
 		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
+		<id>central</id>
+		<name>Maven Central remote repository</name>
+		<url>aartifactregistry://us-central1-maven.pkg.dev/sales-209522/maven-central</url>
+		<layout>default</layout>
+		<releases>
+			<enabled>true</enabled>
+		</releases>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
 		</repository>
-        <repository>
-            <id>artifact-registry</id>
-            <url>artifactregistry://us-central1-maven.pkg.dev/sales-209522/maven-central</url>
-        <releases>
-            <enabled>true</enabled>
-        </releases>
-        <snapshots>
-            <enabled>true</enabled>
-        </snapshots>
-        </repository>
 	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
