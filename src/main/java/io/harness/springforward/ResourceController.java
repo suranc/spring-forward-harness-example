@@ -21,7 +21,7 @@ public class ResourceController {
 	public String index() {
 		ConsumeResources resources = new ConsumeResources();
 
-		return "Consuming Resources!";
+		return "Consuming Resources!!";
 	}
 
 }
