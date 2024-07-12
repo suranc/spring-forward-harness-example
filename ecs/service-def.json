@@ -1,6 +1,6 @@
 {
     "launchType": "FARGATE",
-    "cluster": "spring-forward",
+    "cluster": "suran-cluster",
     "serviceName": "spring-forward",
     "taskDefinition": "suran-spring-forward",
     "desiredCount": 1,
