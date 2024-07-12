@@ -23,6 +23,7 @@
             "systemControls": []
         }
     ],
+    "executionRoleArn": "arn:aws:iam::759984737373:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "requiresCompatibilities": [
         "FARGATE"
