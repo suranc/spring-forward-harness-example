@@ -1,0 +1,24 @@
+{
+    "launchType": "FARGATE",
+    "cluster": "spring-forward",
+    "serviceName": "spring-forward",
+    "taskDefinition": "suran-spring-forward",
+    "desiredCount": 1,
+    "loadBalancers": [],
+    "networkConfiguration": {
+      "awsvpcConfiguration": {
+        "subnets": [
+            "subnet-16dad05b",
+            "subnet-42eb4f38",
+            "subnet-82d8b4ea"
+        ],
+        "securityGroups": [
+            "sg-615abe0b"
+        ],
+        "assignPublicIp": "DISABLED"
+      }
+    },
+    "platformVersion": "LATEST",
+    "schedulingStrategy": "REPLICA",
+    "enableECSManagedTags": true
+  }
