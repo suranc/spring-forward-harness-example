@@ -4,7 +4,11 @@
     "serviceName": "spring-forward",
     "taskDefinition": "suran-spring-forward",
     "desiredCount": 1,
-    "loadBalancers": ["suran-spring-forward-alb"],
+    "loadBalancers": [{
+        "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-2:759984737373:targetgroup/suran-spring-foward-target-group/abc61b2e91da9c92",
+        "containerName": "spring-forward",
+        "containerPort": 8080
+    }],
     "networkConfiguration": {
       "awsvpcConfiguration": {
         "subnets": [
