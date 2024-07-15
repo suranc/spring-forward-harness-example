@@ -4,7 +4,7 @@
     "serviceName": "spring-forward",
     "taskDefinition": "suran-spring-forward",
     "desiredCount": 1,
-    "loadBalancers": [],
+    "loadBalancers": ["suran-spring-forward-alb"],
     "networkConfiguration": {
       "awsvpcConfiguration": {
         "subnets": [
