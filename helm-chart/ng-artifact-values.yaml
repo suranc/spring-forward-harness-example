@@ -1,2 +1,2 @@
 image:
-  tag: "<+artifact.tag>"
+  tag: "<+artifact.version>"
