@@ -1,2 +1,3 @@
 image:
+  repository:: "<+artifact.registryHostname>/<+artifact.project>/<+artifact.repositoryName>/<+artifact.pkg>
   tag: "<+artifact.version>"
