@@ -15,6 +15,9 @@ harness:
     enabled: false
     apiKey: ""
 
+serviceMonitor:
+  enabled: false
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
