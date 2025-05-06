@@ -2,6 +2,8 @@ package io.harness.springforward;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 
 import io.harness.cf.client.api.*;
 import io.harness.cf.client.dto.Target;
@@ -19,9 +21,9 @@ public class AboutController {
 		* the featureFlag
 		*/
 		final Target target = Target.builder()
-                    .identifier("Test")
-                    .name("Test")
-                    .attribute("location", "test env")
+                    .identifier("account1")
+                    .name("Account 1")
+                    .attribute("Region", "EMEA")
                     .build();
 
 		Boolean ABOUT_PAGE = null;
@@ -32,9 +34,11 @@ public class AboutController {
 		}
 
 		if (ABOUT_PAGE) {
-			return "FF is on!";
+			return "ABOUT_PAGE is enabled!";
 		} else {
-			return "FF is off!";
+			throw new ResponseStatusException(
+			HttpStatus.NOT_FOUND, "entity not found"
+			);
 		}
 	}
 }
