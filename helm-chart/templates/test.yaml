@@ -1,0 +1,4 @@
+test:
+  {{- range $key, $secret :=  .Values.secret }}
+      {{- printf "%s: %s" $key $secret | nindent 2 }}
+  {{- end }}

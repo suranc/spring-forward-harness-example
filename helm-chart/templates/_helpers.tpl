@@ -47,7 +47,7 @@ Selector labels
 */}}
 {{- define "spring-forward.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "spring-forward.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/instance: {{ .Values.instancenameOverride }}
 {{- end }}
 
 {{/*
