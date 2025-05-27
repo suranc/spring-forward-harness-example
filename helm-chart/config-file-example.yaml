@@ -1,0 +1,5 @@
+exampleConfigMap:
+  enabled: true
+  testVars:
+    var4: "<+configFile.getAsBase64("configfile")>"
+     #var4: W3NldHRpbmdzXQp0ZXN0PTEK
