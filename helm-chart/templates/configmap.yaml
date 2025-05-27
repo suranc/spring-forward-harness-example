@@ -8,5 +8,5 @@ data:
   var2: {{ .Values.exampleConfigMap.testVars.var2 }}
   var3: {{ .Values.exampleConfigMap.testVars.var3 }}
   var4: |-
-{{ .Values.exampleConfigMap.testVars.var4 | indent 4 }}
+{{ .Values.exampleConfigMap.testVars.var4 | b64dec | indent 4 }}
 {{- end }}
