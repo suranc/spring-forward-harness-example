@@ -5,19 +5,20 @@
     "taskDefinition": "suran-spring-forward",
     "desiredCount": 1,
     "loadBalancers": [{
-        "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-2:759984737373:targetgroup/suran-spring-foward-target-group/abc61b2e91da9c92",
+        "targetGroupArn": "<+serviceVariables.loadBalancerARN>",
         "containerName": "spring-forward",
         "containerPort": 8080
     }],
     "networkConfiguration": {
       "awsvpcConfiguration": {
         "subnets": [
-            "subnet-16dad05b",
-            "subnet-42eb4f38",
-            "subnet-82d8b4ea"
+            "subnet-046a69e5138da629c",
+            "subnet-066fed5cd774c228c",
+            "subnet-008030f334afd9c0d",
+            "subnet-0f4a10bec37b40da8"
         ],
         "securityGroups": [
-            "sg-615abe0b"
+            "sg-0728bac2bd1dd8817"
         ],
         "assignPublicIp": "ENABLED"
       }
