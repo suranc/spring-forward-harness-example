@@ -1,0 +1,11 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: spring-forward-harness-example-<+env.name>
+spec:
+  template:
+    spec:
+      containers:
+        - image: us-east5-docker.pkg.dev/impeng-play/spring-forward-harness-example/app
+          ports:
+            - containerPort: 8080
