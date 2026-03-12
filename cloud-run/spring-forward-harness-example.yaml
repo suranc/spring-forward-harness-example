@@ -2,6 +2,8 @@ apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   name: spring-forward-harness-example-<+env.name>
+  labels:
+    test: value
 spec:
   template:
     spec:
